@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6">
+      <h2><%= @user.name %>さんとのチャット</h2>
+       <table class="table">
+        <thead>
+          <tr>
+            <th style="text-align: left; font-size: 20px;"><%= current_user.name %></th>
+            <th style="text-align: right; font-size: 20px;"><%= @user.name %></th>
+          </tr>
+        </thead>
+        <tbody id="message">
+          <%= render 'chats/chats', chats: @chats %>
+        </tbody>
+      </table>
+      <div id="chats_form">
+        <%= render 'chats/chats_form', chat: @chat %>
+      </div>
+    </div>
+  </div>
+</div>

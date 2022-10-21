@@ -20,4 +20,12 @@ class User < ApplicationRecord
 
         has_many :favorited_posts, through: :favorites, source: :post
         has_many :bookmarked_posts, through: :bookmarks, source: :post
+
+        has_one_attached :profile_image
+
+
+        def following?(user)
+          followings.exists?(user.id)
+        end
+
 end

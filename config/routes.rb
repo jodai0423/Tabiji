@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   # 以下はユーザー
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: "public/registrations",
+    passwords: 'public/passwords',
+    sessions: 'public/sessions'
+  }
   scope module: 'public' do
 
     resources :users, only: [:show, :edit, :update] do
@@ -23,13 +27,15 @@ Rails.application.routes.draw do
       resources :post_comments, only: [:create,:destroy]
     end
 
-    resources :chats, only: [:create, :show]
+    resources :chats, only: [:create, :show, :index]
 
 
 
   end
 
   # 以下は管理者
-  devise_for :admins
+  devise_for :admin, only: [:sessions, :password], :controllers => {
+    :sessions => 'admin/sessions'
+  }
 
 end
