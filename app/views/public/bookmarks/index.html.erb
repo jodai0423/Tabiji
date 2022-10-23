@@ -1,0 +1,5 @@
+<% @bookmarked_posts.each do |bookmark| %>
+  <%= link_to post_path(bookmark.post_id) do %>
+    <%= bookmark.post.get_post_image(100, 100) %>
+  <% end %>
+<% end %>
