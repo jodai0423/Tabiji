@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(version: 2022_10_19_095133) do
 
   create_table "posts", force: :cascade do |t|
     t.integer "user_id"
+    t.string "title"
     t.text "caption"
     t.float "lat"
     t.float "lng"
@@ -123,6 +124,7 @@ ActiveRecord::Schema.define(version: 2022_10_19_095133) do
     t.string "encrypted_password", default: "", null: false
     t.string "name", null: false
     t.string "user_name", null: false
+    t.text "introduction"
     t.boolean "is_deleted", default: false, null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"

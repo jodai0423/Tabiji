@@ -1,16 +1,99 @@
-<%= form_with model: @post,local:true do |f| %>
-  <div class="form-group">
-    <%= f.label :caption %>
-    <%= f.text_area :caption, class: 'form-control post_caption' %>
-  </div>
+<div class="container my-4" style="width: 600px;">
+  <div class="row">
+    <div class="col">
+      <%= form_with model: @post, local:true do |f| %>
 
-  <div class="form-group">
-    <%= f.label :image %>
-    <%= f.file_field :post_image, class: "form-control-file user_image", accept: 'image/*' %>
-  </div>
+        <div class="form-group">
+          <%= f.label :image %>
+          <%= f.file_field :post_image, class: "form-control-file user_image", accept: 'image/*' %>
+        </div>
 
-  <div class="form-group">
-    <%= f.submit class: 'btn btn-success' %>
-  </div>
+        <div class="form-group">
+          <%= f.label :title %>
+          <%= f.text_field :title, class: 'form-control post_caption' %>
+        </div>
 
-<% end %>
+        <div class="form-group">
+          <%= f.label :caption %>
+          <%= f.text_area :caption, class: 'form-control post_caption' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :lat,"緯度" %>
+          <%= f.text_field :lat, id: :lat %>
+          <%= f.label :lng,"経度" %>
+          <%= f.text_field :lng, id: :lng %>
+        </div>
+
+        <div class="form-group">
+          <%= f.submit class: 'btn btn-success' %>
+        </div>
+
+      <% end %>
+
+      <h2>Map</h2>
+
+      <input type="button" value="現在位置を表示" onclick="currentPosition()">
+      <p>ピンの位置で投稿します。<p>
+      <div id='map'></div>
+
+      <style>
+      #map {
+        height: 600px;
+        width: 600px;
+      }
+      </style>
+
+      <script>
+        //初期マップの設定
+        let map
+        let marker
+        function initMap(){
+          geocoder = new google.maps.Geocoder()
+
+          navigator.geolocation.getCurrentPosition(function (position) {
+            LatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+            // 取得した位置情報を中心に表示
+            map = new google.maps.Map(document.getElementById('map'), {
+              center: LatLng,
+              zoom: 17
+            });
+            map.setCenter(LatLng);
+              marker = new google.maps.Marker({
+                map: map,
+                position: LatLng
+            });
+            document.getElementById('lat').value = position.coords.latitude
+            document.getElementById('lng').value = position.coords.longitude
+          });
+        }
+
+
+        //現在位置のマップ作成
+        let geocoder
+        let aft
+        function currentPosition(){
+          navigator.geolocation.getCurrentPosition(function (position) {
+          LatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+            // 取得した位置情報を中心に表示
+            map = new google.maps.Map(document.getElementById('map'), {
+              center: LatLng,
+              zoom: 17
+            });
+            map.setCenter(LatLng);
+              marker = new google.maps.Marker({
+                map: map,
+                position: LatLng
+            });
+            document.getElementById('lat').value = position.coords.latitude
+            document.getElementById('lng').value = position.coords.longitude
+          });
+        }
+
+      </script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap" async defer></script>
+    </div>
+  </div>
+</div>
