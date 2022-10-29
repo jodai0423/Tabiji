@@ -7,9 +7,13 @@ class Post < ApplicationRecord
 
   has_one_attached :post_image
 
-  def get_post_image(width, height)
-    (post_image.attached?) ? post_image : 'no_image.jpg'
-    post_image.variant(resize_to_limit: [width, height]).processed
+  validates :title, presence:true, length:{maximum:20}
+  validates :caption, presence:true, length:{maximum:300}
+  validates :lat, presence:true
+  validates :lng, presence:true
+
+  def get_post_image
+    (post_image.attached?) ? post_image : 'no_image.png'
   end
 
   def favorited_by?(user)
