@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-6">
-      <h2><%= @user.name %>さんとのチャット</h2>
+      <h2><%= @user.user_name %>さんとのチャット</h2>
        <table class="table">
         <thead>
           <tr>
@@ -10,11 +10,11 @@
           </tr>
         </thead>
         <tbody id="message">
-          <%= render 'chats/chats', chats: @chats %>
+          <%= render 'public/chats/chats', chats: @chats %>
         </tbody>
       </table>
       <div id="chats_form">
-        <%= render 'chats/chats_form', chat: @chat %>
+        <%= render 'public/chats/chats_form', chat: @chat %>
       </div>
     </div>
   </div>

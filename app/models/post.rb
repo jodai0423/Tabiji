@@ -15,8 +15,8 @@ class Post < ApplicationRecord
   def get_post_image
     (post_image.attached?) ? post_image : 'no_image.png'
   end
-  
-  
+
+
   def get_post_image(width, height)
     unless post_image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.png')
