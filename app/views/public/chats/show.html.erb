@@ -1,7 +1,7 @@
 <div class="container text-center w-25">
   <div class="row">
     <div class="col">
-      <h2><%= @user.user_name %>さんとのチャット</h2>
+      <h2><%= image_tag @user.get_profile_image(100, 100)%><%= @user.user_name %>さんとのチャット</h2>
       <div id="message">
         <%= render 'public/chats/chats', chats: @chats %>
       </div>
