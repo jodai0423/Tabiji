@@ -2,7 +2,7 @@
   <% if chat.user_id == current_user.id %>
     <div class="row">
       <div class="col-6 text-left">
-        <p class="d-inline-block rounded-pill bg-secondary py-1 px-3"><%= chat.message %></p>
+        <p class="d-inline-block rounded-lg bg-secondary py-1 px-3 text-break text-white"><%= chat.message %></p>
       </div>
       <div class="col-6"></div>
     </div>
@@ -10,7 +10,7 @@
     <div class="row">
       <div class="col-6"></div>
       <div class="col-6 text-right">
-        <p class="d-inline-block rounded-pill border border-secondary py-1 px-3"><%= chat.message %></p>
+        <p class="d-inline-block rounded-lg border border-secondary py-1 px-3 text-break"><%= chat.message %></p>
       </div>
     </div>
   <% end %>
