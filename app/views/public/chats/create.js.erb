@@ -1,2 +1,3 @@
 $('#message').html("<%= j(render "public/chats/chats", chats: @chats) %>");
+$("#scroll-inner").scrollTop($("#scroll-inner")[0].scrollHeight);
 $('.chats_form').val('');

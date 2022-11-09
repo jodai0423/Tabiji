@@ -1,17 +1,19 @@
-<% chats.each do |chat| %>
-  <% if chat.user_id == current_user.id %>
-    <div class="row">
-      <div class="col-6 text-left">
-        <p class="d-inline-block rounded-lg bg-secondary py-1 px-3 text-break text-white"><%= chat.message %></p>
+<div  class="overflow-auto border-top" style="height: 600px;" id="scroll-inner">
+  <% chats.each do |chat| %>
+    <% if chat.user_id == current_user.id %>
+      <div class="row">
+        <div class="col-6"></div>
+        <div class="col-6 text-right">
+          <p class="d-inline-block rounded-lg bg-secondary py-1 px-3 text-break text-white"><%= chat.message %></p>
+        </div>
       </div>
-      <div class="col-6"></div>
-    </div>
-  <% else %>
-    <div class="row">
-      <div class="col-6"></div>
-      <div class="col-6 text-right">
-        <p class="d-inline-block rounded-lg border border-secondary py-1 px-3 text-break"><%= chat.message %></p>
+    <% else %>
+      <div class="row">
+        <div class="col-6 text-left">
+          <p class="d-inline-block rounded-lg border border-secondary py-1 px-3 text-break"><%= chat.message %></p>
+        </div>
+        <div class="col-6"></div>
       </div>
-    </div>
+    <% end %>
   <% end %>
-<% end %>
+</div>

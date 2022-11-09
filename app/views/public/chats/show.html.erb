@@ -1,13 +1,17 @@
 <div class="container text-center w-25">
   <div class="row">
-    <div class="col">
-      <h2><%= image_tag @user.get_profile_image(100, 100)%><%= @user.user_name %>さんとのチャット</h2>
+    <div class="col pt-2 my-5 border">
+      <h2><%= image_tag @user.get_profile_image(50, 50), class: "rounded-circle"%>   <%= @user.user_name %>さん</h2>
       <div id="message">
         <%= render 'public/chats/chats', chats: @chats %>
       </div>
-      <div id="chats_form">
+      <div id="chats_form" class="m-3">
         <%= render 'public/chats/chats_form', chat: @chat %>
       </div>
     </div>
   </div>
 </div>
+
+<script>
+  $("#scroll-inner").scrollTop($("#scroll-inner")[0].scrollHeight);
+</script>
