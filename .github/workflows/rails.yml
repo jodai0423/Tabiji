@@ -12,7 +12,7 @@ jobs:
     - name: whoami
       run: whoami
     - name: ls lha
-      run: ls -lha /home/***/Tabiji/tmp/cache/assets/sprockets/v4.0.0/1H/1HyneLliGLAocm4KVeWzj5tKGWdomYfz7rWloxQlXRc.cache
+      run: ls -lha /home/***/Tabiji/tmp/cache/assets/sprockets/v4.0.0/1H/
     - name: Deploy
       env:
         PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
