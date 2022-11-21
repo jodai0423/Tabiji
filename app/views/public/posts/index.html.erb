@@ -29,11 +29,6 @@
         center: LatLng,
         zoom: 17
       });
-      map.setCenter(LatLng);
-        marker = new google.maps.Marker({
-          map: map,
-          position: LatLng
-      });
       <% @posts.each do |post|%>
         ( function() {
           let markerLatLng = new google.maps.LatLng({lat: <%= post.lat %>, lng: <%= post.lng %>}); // 緯度経度のデータ作成
