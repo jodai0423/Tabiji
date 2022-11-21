@@ -251,7 +251,7 @@ DEPENDENCIES
   capybara (>= 3.26)
   devise
   dotenv-rails
-  image_processing
+  image_processing (~> 1.2)
   jbuilder (~> 2.7)
   jquery-rails
   listen (~> 3.3)
