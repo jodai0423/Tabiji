@@ -46,8 +46,8 @@
 
       <script>
         //初期マップの設定
-        let map
-        let marker
+        var map
+        var marker
         function initMap(){
           geocoder = new google.maps.Geocoder()
 
@@ -71,8 +71,8 @@
 
 
         //現在位置のマップ作成
-        let geocoder
-        let aft
+        var geocoder
+        var aft
         function currentPosition(){
           navigator.geolocation.getCurrentPosition(function (position) {
           LatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);

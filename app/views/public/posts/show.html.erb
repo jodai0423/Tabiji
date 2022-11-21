@@ -12,25 +12,28 @@
           <% end %>
         </div>
         <div class="col-10">
-          <% if @post.favorited_by?(current_user) %>
-            <%= link_to post_favorites_path(@post.id), method: :delete, remote: true do %>
-              ♥<%= @post.favorites.count %>
-            <% end %>
-          <% else %>
-            <%= link_to post_favorites_path(@post.id), method: :post, remote: true  do %>
-              ♡<%= @post.favorites.count %>
-            <% end %>
-          <% end %>
-
-          <% if @post.bookmarked_by?(current_user) %>
-            <%= link_to post_bookmarks_path(@post.id), method: :delete, remote: true do %>
-              <i class="fas fa-bookmark"></i>
-            <% end %>
-          <% else %>
-            <%= link_to post_bookmarks_path(@post.id), method: :post, remote: true  do %>
-              <i class="far fa-bookmark"></i>
-            <% end %>
-          <% end %>
+          <div class="row">
+            <div class="col-6">
+              <div class="d-inline" id="favorite_buttons_<%= @post.id %>">
+                <%= render 'public/favorites/favorite', post: @post %>
+              </div>
+              <div class="d-inline" id="bookmark_buttons_<%= @post.id %>">
+                <%= render 'public/bookmarks/bookmark', post: @post %>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="d-inline-block dropdown w-100 text-right">
+                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  ...
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <%= link_to post_path(@post.id), method: :delete, class: "dropdown-item" do %>
+                    Destroy
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
           <p class="card-title">
             <%= link_to(post_path(@post.id), class:"text-dark") do %>
               <strong><i class="far fa-flag"></i><span> <%= @post.title %></span></strong>
