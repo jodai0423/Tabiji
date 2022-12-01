@@ -4,8 +4,8 @@
       <h2>Log in</h2>
       <%= form_with model: @user, url: session_path(resource_name), local: true do |f| %>
         <div class="field">
-          <%= f.label :email %><br />
-          <%= f.text_field :email, autofocus: true, class: "email" %>
+          <%= f.label :user_name %><br />
+          <%= f.text_field :user_name, autofocus: true, class: "user_name" %>
         </div>
         <div class="field">
           <%= f.label :password %><br />
