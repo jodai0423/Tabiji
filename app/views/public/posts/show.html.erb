@@ -23,14 +23,16 @@
             </div>
             <div class="col-6">
               <div class="d-inline-block dropdown w-100 text-right">
-                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  ...
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <%= link_to post_path(@post.id), method: :delete, class: "dropdown-item" do %>
-                    Destroy
-                  <% end %>
-                </div>
+                <% if @post.user == current_user%>
+                  <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    ...
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <%= link_to post_path(@post.id), method: :delete, class: "dropdown-item" do %>
+                      Destroy
+                    <% end %>
+                  </div>
+                <% end %>
               </div>
             </div>
           </div>
