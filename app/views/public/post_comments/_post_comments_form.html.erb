@@ -1,0 +1,6 @@
+<div class="text-center py-2">
+  <%= form_with model: [post, post_comment], local: false do |f| %>
+    <%= f.text_field :text, class: "post_comment_form" %>
+    <%= f.submit "送信", class:"btn btn-sm btn-success chat-btn" %>
+  <% end %>
+</div>

@@ -43,6 +43,12 @@
           </p>
           <p class="card-text">説明：<%= @post.caption %></p>
           <span><i class="fas fa-user"></i> By <%= @post.user.user_name %></span>
+          <div>
+            <%= render 'public/post_comments/post_comments', post_comments: @post_comments %>
+          </div>
+          <div id="post_comments_form">
+            <%= render 'public/post_comments/post_comments_form', post_comment: @post_comment, post: @post %>
+          </div>
         </div>
       </div>
     </div>

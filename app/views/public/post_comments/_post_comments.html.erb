@@ -1,0 +1,10 @@
+<div class="pt-3">コメント<%= post_comments.count%>件</div>
+<div class="overflow-auto border-top border-bottom" style="height: 200px;" id="post_comments">
+  <% post_comments.each do |post_comment| %>
+      <div class="row py-2">
+        <div class="col-11 my-1">
+          <%= post_comment.user.user_name%>: <%= post_comment.text %>
+        </div>
+      </div>
+  <% end %>
+</div>
