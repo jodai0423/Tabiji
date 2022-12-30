@@ -1,0 +1,13 @@
+<def class="container ">
+  <def class="row">
+    <def class="col-6 mx-auto">
+      <table>
+        <% @user_rooms.each do |room| %>
+
+            <td><%= link_to "メッセージを送る", chat_path(room.user.id), class: "btn btn-sm btn-outline-secondary" %></td>
+
+        <% end %>
+      </table>
+    </def>
+  </def>
+</def>

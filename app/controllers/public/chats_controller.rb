@@ -16,6 +16,10 @@ class Public::ChatsController < ApplicationController
     @chat = Chat.new(room_id: @room.id)
   end
 
+  def index
+    @user_rooms = UserRoom.all
+  end
+
   def create
     @chat = current_user.chats.new(chat_params)
     @chat.save
