@@ -1,11 +1,19 @@
 <def class="container ">
   <def class="row">
     <def class="col-6 mx-auto">
-      <table>
-        <% @user_rooms.each do |room| %>
-
-            <td><%= link_to "メッセージを送る", chat_path(room.user.id), class: "btn btn-sm btn-outline-secondary" %></td>
-
+      <table class="table table-hover">
+        <% @user_rooms.each do |user_room| %>
+          <% if user_room.user == current_user %>
+            <% @user_rooms.each do |room| %>
+              <% if user_room.room_id == room.room_id && room.user != current_user %>
+                <tr onclick='window.location="<%= chat_path(room.user_id) %>"' role="link">
+                  <td>
+                    <%= image_tag room.user.get_profile_image(70, 70), class: "rounded-circle" %> <%= room.user.name %>さん
+                  </td>
+                </tr>
+              <% end %>
+            <% end %>
+          <% end %>
         <% end %>
       </table>
     </def>
