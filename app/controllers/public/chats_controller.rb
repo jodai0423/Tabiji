@@ -1,5 +1,4 @@
 class Public::ChatsController < ApplicationController
-  before_action :ensure_correct_user, only: [:show, :index]
 
   def show
     @user = User.find(params[:id])
@@ -31,13 +30,6 @@ class Public::ChatsController < ApplicationController
 
   def chat_params
     params.require(:chat).permit(:message, :room_id)
-  end
-  
-  def ensure_correct_user
-    @user = User.find(params[:id])
-    unless @user == current_user
-      redirect_to user_path(current_user)
-    end
   end
 
 end
