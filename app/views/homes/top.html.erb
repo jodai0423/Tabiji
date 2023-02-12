@@ -8,12 +8,17 @@
       <p>もしそうなら、Journeyはあなたにぴったりの場所です。</p>
       <p>※このサイトは、随時アップデート中です。</p>
       <div class="btn-wrapper col-10 mx-auto">
-        <div class="row">
-          <%= link_to 'Log in',new_user_session_path, class: "btn btn-info btn-sm btn-block mb-3 sign_in" %>
-        </div>
-        <div class="row">
-          <%= link_to 'Sign Up',new_user_registration_path, class: "btn btn-success btn-sm btn-block sign_up" %>
-        </div>
+        <% if user_signed_in? %>
+          <p>早速投稿をしてみましょう!!</p>
+          <%=  link_to "投稿する！！",  new_post_path ,class: 'nav-link text-light btn btn-success btn-sm ' %>
+        <% else %>
+          <div class="row">
+            <%= link_to 'Log in',new_user_session_path, class: "btn btn-info btn-sm btn-block mb-3 sign_in" %>
+          </div>
+          <div class="row">
+            <%= link_to 'Sign Up',new_user_registration_path, class: "btn btn-success btn-sm btn-block sign_up" %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
